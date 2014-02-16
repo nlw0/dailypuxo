@@ -11,6 +11,7 @@ setuptools.setup(
     include_package_data=True,
     install_requires=[
         'beautifulsoup4',
+        'retrying',
         'simplejson',
     ],
     entry_points={

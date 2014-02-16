@@ -7,7 +7,9 @@ image itself is saved into an 'images' directory.
 
 from bs4 import BeautifulSoup
 import json
+import os.path
 import re
+from retrying import retry
 import urllib2
 
 TAG_URL = 'http://twitpic.com/tag/{tag:}?page={page:}'
@@ -16,22 +18,27 @@ IMG_URL = 'http://twitpic.com/show/full/{code:}'
 
 
 def main():
-    data_file = open('dailypuxo.dat', 'w')
+    data_file = open('dailypuxo.dat', 'a')
 
     codes = get_codes_from_tag('dailypuxo', 8)
 
     for c in codes:
+        image_filename = 'images/' + c + '.jpeg'
+        if os.path.exists(image_filename):
+            continue
+
         tp_data = fetch_twitpic_data(c)
         data_file.write(json.dumps(tp_data) + '\n')
         data_file.flush()
 
-        fp = open('images/' + c + '.jpeg', 'w')
-        fp.write(fetch_twitpic_image(c))
-        fp.close()
+        with open(image_filename, 'w') as fp:
+            fp.write(fetch_twitpic_image(c))
+
     data_file.close()
 
+
 def get_codes_from_tag(tag, pages):
-    for p in range(1, 1+ pages):
+    for p in range(1, 1 + pages):
         for img in get_page(tag, p).find_all('div', 'user-photo-wrap'):
             link = img.find('a')['href']
             assert link[0] == '/'
@@ -51,6 +58,7 @@ def get_page(tag, page):
     return BeautifulSoup(html_doc)
 
 
+@retry
 def fetch_twitpic_data(code):
     myurl = API_URL.format(code=code)
     response = urllib2.urlopen(myurl)
@@ -58,6 +66,7 @@ def fetch_twitpic_data(code):
     return json.loads(html_doc)
 
 
+@retry
 def fetch_twitpic_image(code):
     myurl = IMG_URL.format(code=code)
     response = urllib2.urlopen(myurl)
