@@ -13,10 +13,12 @@ setuptools.setup(
         'beautifulsoup4',
         'retrying',
         'simplejson',
+        'python-dateutil',
     ],
     entry_points={
         'console_scripts': [
             'dpcrawler = dpcrawler.tools.dpcrawler:main',
+            'gen_dart_data = dpcrawler.tools.gen_dart_data:main',
         ],
     },
 )
