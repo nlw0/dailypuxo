@@ -14,6 +14,7 @@ setuptools.setup(
         'retrying',
         'simplejson',
         'python-dateutil',
+        'oauth2',
     ],
     entry_points={
         'console_scripts': [
