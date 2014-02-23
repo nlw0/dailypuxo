@@ -19,6 +19,7 @@ setuptools.setup(
     entry_points={
         'console_scripts': [
             'dpcrawler = dpcrawler.tools.dpcrawler:main',
+            'twitter_crawler = dpcrawler.tools.twitter_crawler:main',
             'gen_dart_data = dpcrawler.tools.gen_dart_data:main',
         ],
     },
