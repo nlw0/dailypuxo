@@ -57,8 +57,10 @@ def main():
     max_id_query = db['tweets'].aggregate(
         {"$group": {"_id": 1, "max_id": {"$min": "$twitter_id"}}}
     )
-
-    max_id = max_id_query['result'][0]['max_id'] - 1
+    if max_id_query['result']:
+        max_id = max_id_query['result'][0]['max_id'] - 1
+    else:
+        max_id = ""
 
     for twid, text, at in th.timeline_generator(max_id=max_id, until="2013-01-01"):
         #if text.find("dailypuxo") >= 0:
