@@ -20,12 +20,17 @@ var mycaptiondate;
 var mycaptiontext;
 //var first_day_cell;
 var active_day_cell;
+var info_element;
 
 hr.HashRouter router;
 var code_to_cell = {};
 
 var disqus_script;
 
+
+var info_div;
+var main_display_wrapper;
+var image_div;
 
 String img_uri;
 
@@ -42,6 +47,20 @@ void mymain() {
 
   DivElement cal_body = querySelector("#cal_body");
   disqus_script = querySelector("#disqus_script");
+
+  info_div = querySelector("#info_div");
+  image_div = querySelector("#image_div");
+  main_display_wrapper = querySelector("#main_display_wrapper");
+  //info_div.remove();
+  print(["mdw", main_display_wrapper]);
+  
+  info_element = querySelector("#dp_title_info");
+  info_element.onClick.listen(display_image);
+  info_element.classes.toggle("info_normal", true);
+  info_element.setAttribute('data-date', "info");
+  info_element.onMouseEnter.listen(print_day);
+  info_element.onMouseLeave.listen(clear_label);
+  code_to_cell['info'] = info_element;
   
   myloadingimage = querySelector("#loading_image");
   myimage = querySelector("#main_image");
@@ -77,8 +96,8 @@ void mymain() {
 
   //first_day_cell = cal_body.children[0].children[0].children[0].children[1].children[0];
   router.run();
-  router.goTo("!/c4unb5/");
-  
+  //router.goTo("!/2013-02-18/");
+  router.goTo("!/info/");
 }
 
 num min(num a, num b) => a<b?a:b;
@@ -134,16 +153,15 @@ TableCellElement dailypuxo_day_cell(num year, num month, num day) {
       ..text = day.toString();
   day_cell.onMouseEnter.listen(print_day);
   day_cell.onMouseLeave.listen(clear_label);
-  day_cell.setAttribute('data-year', "${year}");
-  day_cell.setAttribute('data-month', "${month}");
-  day_cell.setAttribute('data-day', "${day}");
   
-  var img_data = get_img_data(year, month, day); 
-  day_cell.classes.toggle('cal', true);
-  if (img_data != null) {
+  DateTime dt = new DateTime.utc(year, month, day);
+  var cell_date = dt.toString().substring(0,10);  
+  day_cell.setAttribute('data-date', "${cell_date}");
+  
+  if (dailydata[cell_date] != null) {
     day_cell.classes.toggle('cal_has', true);
     day_cell.onClick.listen(display_image);
-    code_to_cell[img_data['short_id']] = day_cell;
+    code_to_cell[cell_date] = day_cell;
   } else {
     day_cell.classes.toggle('cal_hasnt', true);
   }
@@ -152,21 +170,14 @@ TableCellElement dailypuxo_day_cell(num year, num month, num day) {
 
 void print_day(Event e) {
   var qq = e.target;  
-
-  int year = int.parse(qq.getAttribute('data-year'));
-  int month = int.parse(qq.getAttribute('data-month'));
-  int day = int.parse(qq.getAttribute('data-day'));
-
-  DateTime dt = new DateTime.utc(year, month, day);
-  var ds = dt.toString().substring(0,10);
-
-  var img_data = get_img_data(year, month, day);
+  var cell_date = qq.getAttribute('data-date');
+  var img_data = dailydata[cell_date];
 
   var label = querySelector("#o_dia");
   if (img_data != null) {
-    label.text = ds + '\n' + img_data['message'];
+    label.text = cell_date + '\n' + img_data['message'];
   } else {
-    label.text = ds;
+    label.text = cell_date;
   }  
 }
 
@@ -176,8 +187,12 @@ void clear_label(Event e) {
 }
 
 void display_image(Event e) {
-  var img_data = get_img_data_from_cell(e.target);
-  router.goTo("!/${img_data['short_id']}/");
+  var cell_date = get_date_from_cell(e.target);
+  router.goTo("!/${cell_date}/");
+}
+
+void display_info(Event e) {
+  router.goTo("!/info/");  
 }
 
 void dothedance(var xx){
@@ -189,17 +204,46 @@ void display_image_lower(var day_cell) {
   if (day_cell == null) {    
     return;
   }
-  if (active_day_cell!= null) {
-    active_day_cell.classes.toggle('cal_active', false);  
-    active_day_cell.classes.toggle('cal_has', true);  
+  
+  if (active_day_cell != null) {
+    if(active_day_cell != info_element) {
+      active_day_cell.classes.toggle('cal_active', false);  
+      active_day_cell.classes.toggle('cal_has', true);  
+    }
+    if(active_day_cell == info_element) {
+      active_day_cell.classes.toggle('info_normal', true);  
+      active_day_cell.classes.toggle('info_active', false);
+      unload_info_stuff();
+    }
   }
+  
   active_day_cell = day_cell;
-  active_day_cell.classes.toggle('cal_active', true);
-  active_day_cell.classes.toggle('cal_has', false);
-  var img_data = get_img_data_from_cell(day_cell);
-  replace_caption(img_data);
-  replace_image(img_data);
-  replace_disqus(img_data);  
+
+  if (active_day_cell != info_element) {
+    active_day_cell.classes.toggle('cal_active', true);  
+    active_day_cell.classes.toggle('cal_has', false);  
+    var img_data = get_img_data_from_cell(day_cell);
+    replace_caption(img_data);
+    replace_image(img_data);
+    replace_disqus(img_data);  
+  }
+  if (active_day_cell == info_element) {
+    active_day_cell.classes.toggle('info_normal', false);  
+    active_day_cell.classes.toggle('info_active', true);  
+    load_info_stuff();
+  }
+
+}
+
+load_info_stuff() {
+  print("LOAD INFO PAGEEEE");
+  main_display_wrapper.children[0].remove();
+  main_display_wrapper.children.add(info_div);
+}
+unload_info_stuff() {
+  print("UNNNNLOAD INFO PAGE");
+  main_display_wrapper.children[0].remove();
+  main_display_wrapper.children.add(image_div);
 }
 
 replace_image(var img_data) {
@@ -222,20 +266,16 @@ replace_disqus(var img_data) {
   var point = new JsObject(context['reset'], dargs);
 }
 
-get_img_data(num year, num month, num day) {
-  DateTime dt = new DateTime.utc(year, month, day);
-  var ds = dt.toString().substring(0,10);
-  return dailydata[ds];  
+get_date_from_cell(var td) {
+  return td.getAttribute('data-date');
 }
 
-get_img_data_from_cell(TableCellElement td) {
-  int year = int.parse(td.getAttribute('data-year'));
-  int month = int.parse(td.getAttribute('data-month'));
-  int day = int.parse(td.getAttribute('data-day'));
-  
-  DateTime dt = new DateTime.utc(year, month, day);
-  var ds = dt.toString().substring(0,10);
-  return dailydata[ds];  
+get_img_data_from_cell(var td) {
+  if (td.getAttribute('data-date') == null) {
+    return {"short_id":'info'};
+  }
+  var cell_date = td.getAttribute('data-date');
+  return dailydata[cell_date];  
 }
 
 

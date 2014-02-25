@@ -20,6 +20,45 @@ h1, p {
   color: #333;
 }
 
+h2 {
+  color:#ffa;
+  font-size:60px;
+  text-align:center;
+}
+h3 {
+  color:#ffa;
+  font-size:30px;
+}
+p.info_body{
+  margin:10px;
+}
+div.info_body{
+  width:80%;
+  margin-left:10%;
+  background-color:#f44;
+  border-radius:20px;
+  padding:5px;
+}
+
+#o_dia{
+}
+p.data_body{
+  margin: 10px;
+  font-size:14px;
+  line-height:1;
+}
+div.data_body{
+  text-align:left;
+  min-height: 64px;
+  margin-left:auto;
+  margin-right:auto;
+  width:90%;
+
+  background-color:#f44;
+  border-radius:10px;
+  padding:1px;
+}
+
 #big_div {
    border: 2px solid;
    background-color: #e20d0d;
@@ -31,17 +70,58 @@ h1, p {
 #left_bar{
   float:left;
   height:100%;
+  width:380px;
+  text-align:center;
+}
+
+#dp_title_wrapper{
+  position:relative;
+  height:50px;
+  text-align:left;
+}
+#dp_title{
+  width:50%;
+  font-weight: bold;
+  font-size: 30px;
+  margin: 0px auto;
+  color: #ffa;
+  display:inline-block;
+
+  height:50px;
+  line-height: 50px;
+}
+#dp_title_info{
+  height:46px;
+  line-height: 50px;
+
+  width:25%;
+  text-align:center;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0px auto;
+  color:#e20d0d;
+  float:right;
+  display:inline-block;
+  cursor:default;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+  
+}
+.info_normal{
+  background-color: #ffa;   
+  border:2px solid;
+  border-color: #F2470E;
+}
+.info_active{
+  background-color: #ffc;
+  border:2px solid;
+  border-color: #eea;
 }
 
 #cal_body{
-}
-
-#o_dia{
-  min-height: 4em;
-  width:350px;
-  margin-left:auto;
-  margin-right:auto;
-  background-color: #e22;
 }
 
 div.cal {
@@ -80,7 +160,7 @@ td.cal_active {
   }
 td.cal_has {
   border-color: #a01010;
-  background-color: #f91;
+  background-color: #FF9F40
   }
 td.cal_hasnt {
   border-color: #a01010;
@@ -110,6 +190,7 @@ td.cal_month_title {
 
 #main_image_div {
   position:relative;
+  display:inline-block;
   width:600px;
   height:450px;
   border: 1px solid;
@@ -117,7 +198,7 @@ td.cal_month_title {
 }
 
 .main_caption {
-  width: 600px;
+  width: 100%;
   text-align: center;
   color: #ffa;
 }
@@ -142,9 +223,18 @@ img#main_image {
   visibility: hidden;
 }
 
+#info_div{
+}
+
+
 a {
   color:#fff;
-  
+  text-decoration:none;
+}
+
+a.info_link{
+  color:#fff;
+  target-new: tab;
 }
 
 ::-webkit-scrollbar
@@ -159,3 +249,4 @@ a {
 {
   background: rgba(0, 0, 0, 0.5);
 }
+
