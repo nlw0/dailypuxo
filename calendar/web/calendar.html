@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="calendar.css">
+    <link href='http://fonts.googleapis.com/css?family=Exo+2:400,400italic,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div id="big_div">
+      <div id="left_bar">
+        <div id="cal_body"></div>
+        <div id="o_dia"></div>
+      </div>
+      <div id="main_display_wrapper">
+      <div style="text-align:center">
+        <p id="main_caption_date" class="main_caption"/>
+        <p id="main_caption_text" class="main_caption"/>
+        <div id="main_image_div" height=600>
+          <img id="main_image"/>
+          <img id="loading_image" src="loading.png"/>
+        </div>
+        <div>
+          <p>
+            <a id="twitpic_link" href="">Twitpic</a>
+            &nbsp;&nbsp;
+            <a id="twitter_link" href="">Twitter</a>
+          </p>
+        </div>
+        <div id="disqus_thread"></div>
+            <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'dailypuxo';
+    var disqus_identifier = 'c4unb5';
+    var disqus_url = 'http://127.0.0.1:3030/calendar/web/calendar.html#!/c4unb5/';
+  var disqus_config = function () { 
+    this.language = "en";
+  };
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * Disqus Reset Function * * */
+    var reset = function (newIdentifier, newUrl, newTitle, newLanguage) {
+        DISQUS.reset({
+            reload: true,
+            config: function () {
+                this.page.identifier = newIdentifier;
+                this.page.url = newUrl;
+                this.page.title = newTitle;
+                this.language = newLanguage;
+            }
+        });
+    };
+</script>
+        </div>        
+      </div>
+    </div>
+    <script type="application/dart" src="calendar.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+    <script src="packages/browser/interop.js"></script>        
+  </body>
+</html>

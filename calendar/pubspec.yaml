@@ -1,0 +1,6 @@
+name: calendar
+description: A sample web application
+dependencies:
+  browser: 0.9.1
+  hashroute:
+    path: ../hashroute.dart

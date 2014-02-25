@@ -1,0 +1,161 @@
+html {
+  background-color:#eee;
+  height: 95%;
+  width: 100%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:auto;
+  margin-bottom:auto;
+}
+body {
+  background-color: #eee;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.2em;
+  height:100%; 
+}
+
+h1, p {
+  color: #333;
+}
+
+#big_div {
+   border: 2px solid;
+   background-color: #e20d0d;
+   height: 100%;
+   border-radius:10px;
+   padding:5px;
+}
+
+#left_bar{
+  float:left;
+  height:100%;
+}
+
+#cal_body{
+}
+
+#o_dia{
+  min-height: 4em;
+  width:350px;
+  margin-left:auto;
+  margin-right:auto;
+  background-color: #e22;
+}
+
+div.cal {
+  background-color: #e20d0d;
+  border: 3px solid;
+  border-color :#e20d0d;
+  padding: 0px;
+  display: inline-block;  
+  vertical-align:top;
+}
+table.cal {
+  background-color: #e20d0d;
+  border-spacing: 1px;
+  margin-top: -1px;
+  margin-left: -1px;
+  float: left;
+  clear: both;
+  cursor:default;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    user-select: none;
+}
+td.cal {
+  text-align: right;
+  border: 1.5px solid;
+  padding: 1px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 10px;
+  width:12px;
+}
+td.cal_active {
+  border-color: #a01010;
+  background-color: #fc9;
+  }
+td.cal_has {
+  border-color: #a01010;
+  background-color: #f91;
+  }
+td.cal_hasnt {
+  border-color: #a01010;
+  }
+td.cal_blank {
+  border-color: #c11;
+  background-color: #d11;
+  }
+td.cal_month_title {
+  text-align: center;
+  border: 1.5px solid;
+  border-color: #a01010;
+  padding: 1px;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 10px;
+  width:12px; 
+}
+
+#main_display_wrapper {
+   background-color: #e20d0d;
+   float: left;
+   margin:10px;
+   height:90%;
+   width:700px;
+   overflow-y: scroll;      
+}
+
+#main_image_div {
+  position:relative;
+  width:600px;
+  height:450px;
+  border: 1px solid;
+  border-color:#000;
+}
+
+.main_caption {
+  width: 600px;
+  text-align: center;
+  color: #ffa;
+}
+#main_caption_text{
+  height: 2em;
+}
+
+img#loading_image {
+  position:absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2; }
+  
+img#main_image {
+  position:absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}   
+
+.hidden {
+  visibility: hidden;
+}
+
+a {
+  color:#fff;
+  
+}
+
+::-webkit-scrollbar
+{
+  width: 6px;  /* for vertical scrollbars */
+}
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}
