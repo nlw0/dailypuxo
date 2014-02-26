@@ -53,7 +53,6 @@ void mymain() {
   image_div = querySelector("#image_div");
   main_display_wrapper = querySelector("#main_display_wrapper");
   info_div.remove();
-  print(["mdw", main_display_wrapper]);
 
   twitpic_link = querySelector("#twitpic_link");
   twitter_link = querySelector("#twitter_link");
@@ -265,9 +264,10 @@ replace_caption(var img_data) {
   mycaptiontext.text = img_data['message'];
 }
 replace_disqus(var img_data) {
-  var newIdentifier = img_data['short_id'];
-  var newUrl = 'http://127.0.0.1:3030/calendar/web/calendar.html#!/${img_data['short_id']}/';
-  var newTitle = img_data['short_id'];
+  var dpid = img_data['local_timestamp'].substring(0,10);
+  var newIdentifier = dpid;
+  var newUrl = 'http://127.0.0.1:3030/calendar/web/calendar.html#!/${dpid}/';
+  var newTitle = dpid;
   var newLanguage = 'pt';
   var dargs = [newIdentifier, newUrl, newTitle, newLanguage];
   var point = new JsObject(context['reset'], dargs);
