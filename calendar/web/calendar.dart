@@ -26,7 +26,8 @@ hr.HashRouter router;
 var code_to_cell = {};
 
 var disqus_script;
-
+var twitpic_link;
+var twitter_link;
 
 var info_div;
 var main_display_wrapper;
@@ -51,9 +52,12 @@ void mymain() {
   info_div = querySelector("#info_div");
   image_div = querySelector("#image_div");
   main_display_wrapper = querySelector("#main_display_wrapper");
-  //info_div.remove();
+  info_div.remove();
   print(["mdw", main_display_wrapper]);
-  
+
+  twitpic_link = querySelector("#twitpic_link");
+  twitter_link = querySelector("#twitter_link");
+
   info_element = querySelector("#dp_title_info");
   info_element.onClick.listen(display_image);
   info_element.classes.toggle("info_normal", true);
@@ -223,9 +227,7 @@ void display_image_lower(var day_cell) {
     active_day_cell.classes.toggle('cal_active', true);  
     active_day_cell.classes.toggle('cal_has', false);  
     var img_data = get_img_data_from_cell(day_cell);
-    replace_caption(img_data);
-    replace_image(img_data);
-    replace_disqus(img_data);  
+    replace_stuff(img_data);  
   }
   if (active_day_cell == info_element) {
     active_day_cell.classes.toggle('info_normal', false);  
@@ -246,17 +248,22 @@ unload_info_stuff() {
   main_display_wrapper.children.add(image_div);
 }
 
+replace_stuff(var img_data){
+  replace_caption(img_data);
+  replace_image(img_data);
+  replace_disqus(img_data);
+  replace_linx(img_data);
+}
+
 replace_image(var img_data) {
   img_uri = 'http://twitpic.com/show/full/${img_data['short_id']}';
   load_puxo_image(img_uri);   
 }
-
 replace_caption(var img_data) {
   var time = DateTime.parse(img_data['local_timestamp']).toString().substring(0,19);
   mycaptiondate.text = time;
   mycaptiontext.text = img_data['message'];
 }
-
 replace_disqus(var img_data) {
   var newIdentifier = img_data['short_id'];
   var newUrl = 'http://127.0.0.1:3030/calendar/web/calendar.html#!/${img_data['short_id']}/';
@@ -264,6 +271,12 @@ replace_disqus(var img_data) {
   var newLanguage = 'pt';
   var dargs = [newIdentifier, newUrl, newTitle, newLanguage];
   var point = new JsObject(context['reset'], dargs);
+}
+replace_linx(var img_data) {
+  print(img_data);
+  twitpic_link.href = "http://twitpic.com/${img_data['short_id']}";
+  twitter_link.href = "http://twitter.com/nwerneck/status/${img_data['twitter_id']}";
+  
 }
 
 get_date_from_cell(var td) {

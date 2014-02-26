@@ -13,7 +13,7 @@ body {
   font-size: 14px;
   font-weight: normal;
   line-height: 1.2em;
-  height:100%; 
+  height:100%;
 }
 
 h1, p {
@@ -62,15 +62,19 @@ div.data_body{
 #big_div {
    border: 2px solid;
    background-color: #e20d0d;
-   height: 100%;
-   border-radius:10px;
-   padding:5px;
+   height: 98%;
+   border-radius: 10px;
+   padding: 5px;
+   min-width: 1107px;
+   width: 98%;
+   margin:auto;
 }
 
 #left_bar{
-  float:left;
-  height:100%;
-  width:380px;
+  display: inline-block;
+  vertical-align:top;
+  height: 100%;
+  width: 380px;
   text-align:center;
 }
 
@@ -137,6 +141,8 @@ table.cal {
   border-spacing: 1px;
   margin-top: -1px;
   margin-left: -1px;
+  font-size: 10px;
+  line-height: 12px;
 
   cursor:default;
     -webkit-user-select: none;
@@ -150,7 +156,6 @@ td.cal {
   border: 1.5px solid;
   padding: 1px;
   font-family: 'Exo 2', sans-serif;
-  font-size: 10px;
   width:12px;
 }
 td.cal_active {
@@ -174,17 +179,16 @@ td.cal_month_title {
   border-color: #a01010;
   padding: 1px;
   font-family: 'Exo 2', sans-serif;
-  font-size: 10px;
   width:12px; 
 }
 
 #main_display_wrapper {
+   display: inline-block;
    background-color: #e20d0d;
-   float: left;
-   margin:10px;
-   height:90%;
+   height:100%;
    width:700px;
-   overflow-y: scroll;      
+   overflow-y: scroll;
+   margin-left: 1%;
 }
 
 #main_image_div {
@@ -233,7 +237,6 @@ a {
 
 a.info_link{
   color:#fff;
-  target-new: tab;
 }
 
 ::-webkit-scrollbar
