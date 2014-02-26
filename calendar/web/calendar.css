@@ -63,11 +63,17 @@ div.data_body{
    border: 2px solid;
    background-color: #e20d0d;
    height: 98%;
+   width: 98%;
    border-radius: 10px;
    padding: 5px;
    min-width: 1107px;
-   width: 98%;
    margin:auto;
+   background-image: url('dpwallpaper-fs8.png');
+   background-position:right;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size:cover;
 }
 
 #left_bar{
@@ -184,7 +190,7 @@ td.cal_month_title {
 
 #main_display_wrapper {
    display: inline-block;
-   background-color: #e20d0d;
+   background: rgba(0,0,0,0);
    height:100%;
    width:700px;
    overflow-y: scroll;
