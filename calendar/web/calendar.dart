@@ -28,6 +28,8 @@ var code_to_cell = {};
 var disqus_script;
 var twitpic_link;
 var twitter_link;
+var prev_link;
+var next_link;
 
 var info_div;
 var main_display_wrapper;
@@ -56,6 +58,8 @@ void mymain() {
 
   twitpic_link = querySelector("#twitpic_link");
   twitter_link = querySelector("#twitter_link");
+  prev_link = querySelector("#prev_arrow");
+  next_link = querySelector("#next_arrow");
 
   info_element = querySelector("#dp_title_info");
   info_element.onClick.listen(display_image);
@@ -276,7 +280,8 @@ replace_linx(var img_data) {
   print(img_data);
   twitpic_link.href = "http://twitpic.com/${img_data['short_id']}";
   twitter_link.href = "http://twitter.com/nwerneck/status/${img_data['twitter_id']}";
-  
+  prev_link.href = "#!/${img_data['previous_day']}/";
+  next_link.href = "#!/${img_data['next_day']}/";
 }
 
 get_date_from_cell(var td) {

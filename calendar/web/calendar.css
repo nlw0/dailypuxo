@@ -76,7 +76,7 @@ div.data_body{
    width: 98%;
    border-radius: 10px;
    padding: 5px;
-   min-width: 1107px;
+   min-width: 1157px;
    margin:auto;
    background-image: url('dpwallpaper-fs8.png');
    background-position:right;
@@ -128,7 +128,6 @@ div.data_body{
   -moz-user-select: -moz-none;
   -o-user-select: none;
   user-select: none;
-  
 }
 .info_normal{
   background-color: #ffa;   
@@ -214,6 +213,25 @@ td.cal_month_title {
   height:450px;
   border: 1px solid;
   border-color:#000;
+  vertical-align:middle;
+}
+
+a.arrow{
+  display:inline-block;
+  margin:10px;
+  font-size:30px;
+  cursor:default;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+a.arrow:hover{
+  color:#ffa;
+}
+a.arrow:visited{
+  color:#faa;
 }
 
 .main_caption {
