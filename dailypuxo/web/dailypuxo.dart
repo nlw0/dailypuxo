@@ -104,7 +104,11 @@ void mymain() {
   //first_day_cell = cal_body.children[0].children[0].children[0].children[1].children[0];
   router.run();
   //router.goTo("!/2013-02-18/");
-  router.goTo("!/info/");
+  //router.goTo("!/info/");
+  if (window.location.hash=='') {
+    router.goTo("!/info/");                               
+  }
+
 }
 
 num min(num a, num b) => a<b?a:b;
@@ -203,7 +207,6 @@ void display_info(Event e) {
 }
 
 void dothedance(var xx){
-  print('opening ${xx}');
   display_image_lower(code_to_cell[xx['tpcode']]);
 }
 
@@ -241,12 +244,10 @@ void display_image_lower(var day_cell) {
 }
 
 load_info_stuff() {
-  print("LOAD INFO PAGEEEE");
   main_display_wrapper.children[0].remove();
   main_display_wrapper.children.add(info_div);
 }
 unload_info_stuff() {
-  print("UNNNNLOAD INFO PAGE");
   main_display_wrapper.children[0].remove();
   main_display_wrapper.children.add(image_div);
 }
@@ -277,7 +278,6 @@ replace_disqus(var img_data) {
   var point = new JsObject(context['reset'], dargs);
 }
 replace_linx(var img_data) {
-  print(img_data);
   twitpic_link.href = "http://twitpic.com/${img_data['short_id']}";
   twitter_link.href = "http://twitter.com/nwerneck/status/${img_data['twitter_id']}";
   prev_link.href = "#!/${img_data['previous_day']}/";
