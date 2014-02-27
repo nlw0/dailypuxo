@@ -1,12 +1,8 @@
 from pymongo import MongoClient
 from dateutil import parser
+from mytwitterkeys import *
 import oauth2 as oauth
 import json
-
-CONSUMER_KEY = 'wGmcUuiveRydaKiqrHjsUA'
-CONSUMER_SECRET = 'XZBm2sQ5wIp67BE0eewA6S3yGYF4cpbQkEilPMBNwOI'
-ACCESS_KEY = '13129082-cw9rV2cJD5CjMIA8nVvhGmxHPUgXazsDj7DdPKSxx'
-ACCESS_SECRET = 'P7lombxv8bAcMvTsDOCMW61YxmwwO3QL61Y782Pvd0RnZ'
 
 
 class TwitterHandler(object):
@@ -64,4 +60,5 @@ def main():
 
     for twid, text, at in th.timeline_generator(max_id=max_id, until="2013-01-01"):
         #if text.find("dailypuxo") >= 0:
-        db['tweets'].insert({"twitter_id": twid, "text": text, "time": at})
+        #db['tweets'].insert({"twitter_id": twid, "text": text, "time": at})
+        print {"twitter_id": twid, "text": text, "time": at}
