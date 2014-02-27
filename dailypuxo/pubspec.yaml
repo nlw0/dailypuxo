@@ -1,0 +1,6 @@
+name: dailypuxo
+description: Art project, mobile experiment, photographical hobby
+dependencies:
+  browser: 0.9.1
+  hashroute:
+    path: ../hashroute.dart

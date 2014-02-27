@@ -270,7 +270,7 @@ replace_caption(var img_data) {
 replace_disqus(var img_data) {
   var dpid = img_data['local_timestamp'].substring(0,10);
   var newIdentifier = dpid;
-  var newUrl = 'http://127.0.0.1:3030/calendar/web/calendar.html#!/${dpid}/';
+  var newUrl = 'http://nwerneck.sdf.org/dailypuxo/dailypuxo.html#!/${dpid}/';
   var newTitle = dpid;
   var newLanguage = 'pt';
   var dargs = [newIdentifier, newUrl, newTitle, newLanguage];
