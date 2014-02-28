@@ -7,6 +7,6 @@ This project contains two things. First is a twitter and twitpic crawler used to
 
 Then there is a website, made with Dart. It's a single stand-alone page that loads a larde data JSON file produced by the previous tools, and lets you navigate through the images. The images are hosted on twitpic.
 
-The quality from this code is not good. I did it in a hurry during my vacations, while I was learning Dart one thing or two about dynamic web page development. I would love to have some more structure and classes in the code, and also maybe to move some of the logic to the server. There is probably a smarter way to do the handling of the clicks, and changes to the view, I believe what I did is a kind of primitive "model-view-controller"...
+The quality from this code is not good. I did it in a hurry during my vacations, while I was learning Dart and also one thing or two about web development. I would love to have some more structure and classes in the code, and also maybe to move some of the logic to the server. There is probably a smarter way to do the handling of the clicks, and changes to the view, I believe what I did is a kind of primitive "model-view-controller"...
 
 Enjoy!
