@@ -1,7 +1,7 @@
 dailypuxo
 =========
 
-DAILYPUXO is a kind of art project and engineering experiment conducted by Nicolau Werneck in 2013. Tons of pictures from the same monument were taken during a whole year, and published on Twitter.
+DAILYPUXO is a kind of art project and engineering experiment conducted by Nicolau Werneck in 2013. Tons of pictures from the same monument were taken during a whole year, and published on Twitter. You can see the pictures on http://nwerneck.sdf.org/dailypuxo .
 
 This project contains two things. First is a twitter and twitpic crawler used to generate a large data file that contains information about all the images.
 
